@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers all form elements */
+        }
+        label {
+            font-size: 1em;
+            margin-top: 15px;
+            color: #555;
+            text-align: center;
+            display: block;
+            width: 100%; /* Ensures labels take full width for centering */
+        }
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%; /* Centers the input fields with equal space on both sides */
+            max-width: 300px; /* Limits the input field width */
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        textarea {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 0.9em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            height: 150px;
+            resize: none;
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        textarea[readonly] {
+            cursor: default;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .return-button {
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .return-button:hover {
+            background-color: #0056b3;
+        }
+        .bookshelf-info {
+            margin-top: 30px;
+            text-align: left;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .bookshelf-info h2 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .bookshelf-info ul {
+            padding-left: 20px;
+        }
+        .bookshelf-info ul li {
+            margin-bottom: 5px;
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add a book to your bookshelf</h1>
+
+        <form action="{{ url_for('add_book') }}" method="post">
+            <label for="shelf_id">Shelf ID:</label>
+            <input type="text" id="shelf_id" name="shelf_id" placeholder="Enter the ID of the bookshelf" required>
+
+            <label for="volume_id">Volume ID:</label>
+            <input type="text" id="volume_id" name="volume_id" placeholder="Enter the ID of the book" required>
+
+            <button type="submit">Add Book</button>
+        </form>
+        <a href="{{ url_for('bookshelves') }}" class="return-button">Return to Bookshelves</a>
+        <!-- Bookshelf Info Section -->
+        <div class="bookshelf-info">
+            <h2>Bookshelf ID:</h2>
+            <ul>
+                <li><strong>0</strong>: Favorites</li>
+                <li><strong>1</strong>: Purchased</li>
+                <li><strong>2</strong>: To read</li>
+                <li><strong>3</strong>: Reading Now</li>
+                <li><strong>4</strong>: Have read</li>
+                <li><strong>5</strong>: Reviewed</li>
+                <li><strong>6</strong>: Recently viewed</li>
+                <li><strong>7</strong>: My Google eBooks</li>
+                <li><strong>8</strong>: Books for you</li>
+                <li><strong>9</strong>: Browsing history</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

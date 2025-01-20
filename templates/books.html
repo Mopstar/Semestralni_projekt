@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shelf_title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        li strong {
+            color: #333;
+            font-size: 1.2em;
+        }
+        li p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .return-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .return-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ shelf_title }}</h1>
+
+        {% if books %}
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <strong>{{ book.volumeInfo.title }}</strong>
+                        <p>Author(s): {{ book.volumeInfo.authors|join(', ') }}</p>
+                        <p>Book ID: {{ book.id }}</p> <!-- Display the book's ID -->
+                        <p>Published Date: {{ book.volumeInfo.publishedDate or 'N/A' }}</p> <!-- Add published date -->
+                        <p>Publisher: {{ book.volumeInfo.publisher or 'N/A' }}</p> <!-- Add publisher -->
+                        <p>Description: {{ book.volumeInfo.description|truncate(200) }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books found in this shelf.</p>
+        {% endif %}
+
+        <a href="{{ url_for('bookshelves') }}" class="return-button">Return to Bookshelves</a>
+    </div>
+</body>
+</html>
