@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Book Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #555;
+        }
+        select {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 300px;
+            cursor: pointer;
+            background-color: #f5f5f5;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .return-button {
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .return-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Bookshelf for Personalized Suggestions</h1>
+        <form action="{{ url_for('personalized_menu') }}" method="post">
+            <label for="shelf_id">Choose a bookshelf:</label>
+            <select id="shelf_id" name="shelf_id" required>
+                <option value="" disabled selected>Select a bookshelf</option>
+                <option value="0">Favorites</option>
+                <option value="1">Purchased</option>
+                <option value="2">To read</option>
+                <option value="3">Reading Now</option>
+                <option value="4">Have read</option>
+                <option value="5">Reviewed</option>
+                <option value="6">Recently viewed</option>
+                <option value="7">My Google eBooks</option>
+                <option value="8">Books for you</option>
+                <option value="9">Browsing history</option>
+            </select>
+
+            <button type="submit">Get Suggestions</button>
+        </form>
+        <a href="{{ url_for('bookshelves') }}" class="return-button">Return to Bookshelves</a>
+    </div>
+</body>
+</html>

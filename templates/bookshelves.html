@@ -82,12 +82,16 @@
             <button><span class="icon">➕</span> Add a Book</button>
         </a>
 
-        <a href="{{ url_for('suggest_books') }}">
-            <button><span class="icon">🔍</span> Suggest books</button>
+         <a href="{{ url_for('remove_book_page') }}">
+            <button><span class="icon">❌</span> Remove a Book</button>
         </a>
 
-        <a href="{{ url_for('remove_book_page') }}">
-            <button><span class="icon">❌</span> Remove a Book</button>
+        <a href="{{ url_for('search_books') }}">
+            <button><span class="icon">🔍</span> Search books</button>
+        </a>
+
+        <a href="{{ url_for('personalized_menu') }}">
+            <button><span class="icon">📖</span> Personalized Suggestions</button>
         </a>
     </div>
 </body>
