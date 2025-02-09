@@ -42,7 +42,7 @@
             display: block;
             width: 100%; /* Ensures labels take full width for centering */
         }
-        input {
+        input, select {
             padding: 10px;
             margin-top: 5px;
             font-size: 1em;
@@ -51,23 +51,19 @@
             width: 90%; /* Centers the input fields with equal space on both sides */
             max-width: 300px; /* Limits the input field width */
             box-sizing: border-box; /* Ensures padding doesn't affect width */
-        }
-        textarea {
-            margin-top: 20px;
-            padding: 10px;
-            font-size: 0.9em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
-            height: 150px;
-            resize: none;
             background-color: #f5f5f5;
-            color: #333;
-            font-family: Arial, sans-serif;
         }
-        textarea[readonly] {
-            cursor: default;
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="black" d="M2 0L0 2h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px 10px;
+        }
+        select:focus {
+            outline: none;
+            border-color: #4CAF50; /* Green highlight on focus */
         }
         button {
             padding: 10px 20px;
@@ -97,54 +93,38 @@
         .return-button:hover {
             background-color: #0056b3;
         }
-        .bookshelf-info {
-            margin-top: 30px;
-            text-align: left;
-            font-size: 0.9em;
-            color: #555;
-        }
-        .bookshelf-info h2 {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .bookshelf-info ul {
-            padding-left: 20px;
-        }
-        .bookshelf-info ul li {
-            margin-bottom: 5px;
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Add a book to your bookshelf</h1>
+        <h1>Add a Book to Your Bookshelf</h1>
 
         <form action="{{ url_for('add_book') }}" method="post">
-            <label for="shelf_id">Shelf ID:</label>
-            <input type="text" id="shelf_id" name="shelf_id" placeholder="Enter the ID of the bookshelf" required>
+            <!-- Dropdown List for Shelf Selection -->
+            <label for="shelf_id">Select Bookshelf:</label>
+            <select id="shelf_id" name="shelf_id" required>
+                <option value="" disabled selected>Choose a bookshelf</option>
+                <option value="0">Favorites</option>
+                <option value="1">Purchased</option>
+                <option value="2">To Read</option>
+                <option value="3">Reading Now</option>
+                <option value="4">Have Read</option>
+                <option value="5">Reviewed</option>
+                <option value="6">Recently Viewed</option>
+                <option value="7">My Google eBooks</option>
+                <option value="8">Books for You</option>
+                <option value="9">Browsing History</option>
+            </select>
 
+            <!-- Input field for Book ID -->
             <label for="volume_id">Volume ID:</label>
             <input type="text" id="volume_id" name="volume_id" placeholder="Enter the ID of the book" required>
 
             <button type="submit">Add Book</button>
         </form>
+
+        <!-- Return to Bookshelves Button -->
         <a href="{{ url_for('bookshelves') }}" class="return-button">Return to Bookshelves</a>
-        <!-- Bookshelf Info Section -->
-        <div class="bookshelf-info">
-            <h2>Bookshelf ID:</h2>
-            <ul>
-                <li><strong>0</strong>: Favorites</li>
-                <li><strong>1</strong>: Purchased</li>
-                <li><strong>2</strong>: To read</li>
-                <li><strong>3</strong>: Reading Now</li>
-                <li><strong>4</strong>: Have read</li>
-                <li><strong>5</strong>: Reviewed</li>
-                <li><strong>6</strong>: Recently viewed</li>
-                <li><strong>7</strong>: My Google eBooks</li>
-                <li><strong>8</strong>: Books for you</li>
-                <li><strong>9</strong>: Browsing history</li>
-            </ul>
-        </div>
     </div>
 </body>
 </html>
