@@ -26,11 +26,11 @@ Tento projekt umožňuje:
 ``` bash
    pip install -r requirements.txt
 ```
-(Pokud není k dispozici soubor requirements.txt, můžete nainstalovat jednotlivé balíčky ručně, např.:
+Pokud není k dispozici soubor requirements.txt, můžete nainstalovat jednotlivé balíčky ručně, např.:
 ``` bash
    pip install Flask requests
 ```
-)
+
 ## 4. Konfigurace
 Některé funkce využívají Google Books API s OAuth 2.0. Proto je potřeba nastavit proměnné prostředí (např. v .env nebo systémově) pro správné fungování autentizace:
 - CLIENT_ID
